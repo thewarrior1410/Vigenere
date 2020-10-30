@@ -6,15 +6,15 @@
         xmlns:local="clr-namespace:Vigenere"
         xmlns:converters="clr-namespace:Vigenere.Converters"
         mc:Ignorable="d"
-        Title="Vigenere" Height="400" Width="600"
+        Title="Vigenere-v2" Height="400" Width="600"
         Style="{StaticResource DefaultFont}">
 
     <Window.Resources>
         <converters:VigenereClearToCodeConverter x:Key="ClearToCode"/>
         <converters:VigenereCodeToClearConverter x:Key="CodeToClear"/>
 
-        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type Label}}" x:Key="MultiBoundCode">
-            <Setter Property="Content">
+        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}" x:Key="MultiBoundCode">
+            <Setter Property="Text">
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource ClearToCode}">
                         <Binding Path="Clear"/>
@@ -24,8 +24,8 @@
             </Setter>
         </Style>
 
-        <Style TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type Label}}" x:Key="MultiBoundClear">
-            <Setter Property="Content">
+        <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}" x:Key="MultiBoundClear">
+            <Setter Property="Text">
                 <Setter.Value>
                     <MultiBinding Converter="{StaticResource CodeToClear}">
                         <Binding Path="Code"/>
@@ -42,10 +42,10 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="50*"/>
-            <RowDefinition Height="70*"/>
-            <RowDefinition Height="70*"/>
-            <RowDefinition Height="70*"/>
-            <RowDefinition Height="80*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="50*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -63,21 +63,29 @@
             <!--<Button x:Name="button_code" Grid.Column="1" HorizontalAlignment="Left" Height="20" Width="50" Margin="20,0,0,0" Click="Run" Visibility="Hidden">CODE</Button>-->
             
         </Grid>
-        
+
 
         <Label x:Name="headline" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="10" FontSize="20" FontWeight="Bold">Vigenere Encode</Label>
+        
 
         <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">Klartext</Label>
-        <TextBox x:Name="clear_inp" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="200" Margin="0,0,0,10" Text="{Binding Path=Clear, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-        <Label x:Name="clear_out" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="200" Margin="0,0,0,10" Visibility="Collapsed" Style="{StaticResource MultiBoundClear}"></Label>
 
-        <TextBox x:Name="password" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="130" Margin="20" Text="{Binding Path=Password, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-        <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20">Passwort</Label>
+        <TextBox x:Name="clear_inp" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" MinHeight="50" Height="auto" MinWidth="200" Width="auto" Margin="50,40,50,10" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Text="{Binding Path=Clear, UpdateSourceTrigger=PropertyChanged}"></TextBox>
 
-        <Label x:Name="code_out" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="0,10,0,0" Style="{StaticResource MultiBoundCode}"></Label>
-        <TextBox x:Name="code_inp" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Margin="0,10,0,0" Visibility="Collapsed" Text="{Binding Path=Code, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <TextBox x:Name="clear_out" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="auto" MinWidth="200" Width="auto" Margin="50,40,50,10" Visibility="Collapsed" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Style="{StaticResource MultiBoundClear}" Background="LightGray"></TextBox>
+        
+        
+        <TextBox x:Name="password" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="130" Margin="10" Text="{Binding Path=Password, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+        <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10,10,30,10">Passwort</Label>
+
+
+        <TextBox x:Name="code_out" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" Height="auto" MinWidth="200" Width="auto" Margin="50,10,50,40" IsReadOnly="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Style="{StaticResource MultiBoundCode}" Background="LightGray"></TextBox>
+
+        <TextBox x:Name="code_inp" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" MinHeight="50" Height="auto" MinWidth="200" Width="auto" Margin="50,10,50,40" Visibility="Collapsed" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Text="{Binding Path=Code, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
         <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10">Geheimtext</Label>
-
+        
+        
         <Button Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Height="20" Width="50" Margin="20,0,0,0" Click="Exit">QUIT</Button>
         <Label x:Name="Info_Label" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="120,0,0,0">Info:</Label>
 

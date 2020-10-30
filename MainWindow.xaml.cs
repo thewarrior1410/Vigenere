@@ -77,7 +77,7 @@ namespace Vigenere
                     OnPropertyChanged();
 
                     Info_Label.Content = "Info: Changed clear!";
-                    System.Console.Out.WriteLine("Clear: " + _clear);
+                    // System.Console.Out.WriteLine("Clear: " + _clear);
                 }
             }
         }
@@ -94,7 +94,7 @@ namespace Vigenere
                     OnPropertyChanged();
 
                     Info_Label.Content = "Info: Changed code";
-                    System.Console.Out.WriteLine("Code: "+_code);
+                    // System.Console.Out.WriteLine("Code: "+_code);
                 }
             }
         }
@@ -119,7 +119,7 @@ namespace Vigenere
 
             if(Mode == 0)
             {
-                Code = code_out.Content.ToString();
+                Code = code_out.Text.ToString();
                 clear_inp.Visibility = Visibility.Collapsed;
                 clear_out.Visibility = Visibility.Visible;
 
@@ -130,7 +130,7 @@ namespace Vigenere
             }
             else if(Mode == 1)
             {
-                Clear = clear_out.Content.ToString();
+                Clear = clear_out.Text.ToString();
                 clear_inp.Visibility = Visibility.Visible;
                 clear_out.Visibility = Visibility.Collapsed;
 

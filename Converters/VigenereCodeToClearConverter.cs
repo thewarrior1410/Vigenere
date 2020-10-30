@@ -10,6 +10,9 @@ namespace Vigenere.Converters
         private string aLPH = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         public string ALPH { get => aLPH; set => aLPH = value; }
 
+        private char[] keepChars = { ' ', '.', ',', '!', '?' };
+        public char[] KeepChars { get => keepChars; set => keepChars = value; }
+
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             try
@@ -56,8 +59,17 @@ namespace Vigenere.Converters
                 int c = ALPH.IndexOf(passwLen[i]);
                 int t = ALPH.IndexOf(inp[i]);
 
-                if (c == -1 || t == -1)
-                    return "INVALID INPUT";
+                if (Array.Exists(KeepChars, element => element == inp[i]))
+                {
+                    // keep spaces/signs from the input for the output
+                    clear += inp[i];
+                    continue;
+                }
+
+                if (c == -1)
+                    return "INVALID INPUT: '" + passwLen[i] + "'";
+                if (t == -1)
+                    return "INVALID INPUT: '" + inp[i] + "'";
 
                 int index = t - c;
 

@@ -14,3 +14,4 @@ C:\Users\jankr\Desktop\Informatik\Programmieren\C#\GUI\WPF Desktop Apps\Vigenere
 C:\Users\jankr\Desktop\Informatik\Programmieren\C#\GUI\WPF Desktop Apps\Vigenere\obj\Debug\Vigenere.csproj.CoreCompileInputs.cache
 C:\Users\jankr\Desktop\Informatik\Programmieren\C#\GUI\WPF Desktop Apps\Vigenere\obj\Debug\Vigenere.exe
 C:\Users\jankr\Desktop\Informatik\Programmieren\C#\GUI\WPF Desktop Apps\Vigenere\obj\Debug\Vigenere.pdb
+C:\Users\jankr\Desktop\Informatik\Programmieren\C#\GUI\WPF Desktop Apps\Vigenere\obj\Debug\Vigenere.csprojAssemblyReference.cache
